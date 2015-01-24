@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NIr-Gp-5nC">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Root View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="RootViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6CI-Tz-BYb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="55J-7R-uHa"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="55J-7R-uHa"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="55J-7R-uHa"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="S1F-0b-cST"/>
+                                </connections>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vwu-pu-U5Q" customClass="CustomCollection">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7MN-Oa-R1L">
+                                    <size key="itemSize" width="368" height="367"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Item" id="nnK-QK-5IT" customClass="CustomCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="368" height="367"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pxO-zf-nEY">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                    <variation key="widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="368" height="367"/>
+                                                    </variation>
+                                                </imageView>
+                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favoriteBlank" translatesAutoresizingMaskIntoConstraints="NO" id="dCi-Mg-PMQ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                    <gestureRecognizers/>
+                                                    <variation key="widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="320" y="319" width="34" height="34"/>
+                                                    </variation>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="8DL-iX-PsB" appends="YES" id="igy-C6-wFQ"/>
+                                                        <outletCollection property="gestureRecognizers" destination="8DL-iX-PsB" appends="YES" id="5pe-VC-ttU"/>
+                                                    </connections>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="pxO-zf-nEY"/>
+                                                <exclude reference="dCi-Mg-PMQ"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="subviews">
+                                                <include reference="pxO-zf-nEY"/>
+                                                <include reference="dCi-Mg-PMQ"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="favouriteStar" destination="dCi-Mg-PMQ" id="ksm-UB-oOo"/>
+                                            <outlet property="imageView" destination="pxO-zf-nEY" id="Xb0-sM-Hjj"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="UOX-Cb-S2v"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="ZHx-EL-SAH"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="vwu-pu-U5Q" secondAttribute="trailing" constant="-16" id="Luw-ew-4ot"/>
+                            <constraint firstItem="vwu-pu-U5Q" firstAttribute="top" secondItem="6CI-Tz-BYb" secondAttribute="bottom" id="NYy-mK-cJz"/>
+                            <constraint firstItem="6CI-Tz-BYb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="P4v-z9-Ubh"/>
+                            <constraint firstAttribute="centerX" secondItem="vwu-pu-U5Q" secondAttribute="centerX" id="Uje-7C-Wh4"/>
+                            <constraint firstItem="vwu-pu-U5Q" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="jhl-xY-vSy"/>
+                            <constraint firstItem="6CI-Tz-BYb" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="1" id="jvw-qf-swu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6CI-Tz-BYb" secondAttribute="trailing" constant="-16" id="kz3-ZK-D1r"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="vwu-pu-U5Q" secondAttribute="bottom" id="nqB-Vg-jVq"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="6CI-Tz-BYb"/>
+                                <exclude reference="vwu-pu-U5Q"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="nqB-Vg-jVq"/>
+                                <exclude reference="P4v-z9-Ubh"/>
+                                <exclude reference="jvw-qf-swu"/>
+                                <exclude reference="kz3-ZK-D1r"/>
+                                <exclude reference="Luw-ew-4ot"/>
+                                <exclude reference="NYy-mK-cJz"/>
+                                <exclude reference="Uje-7C-Wh4"/>
+                                <exclude reference="jhl-xY-vSy"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="6CI-Tz-BYb"/>
+                                <include reference="vwu-pu-U5Q"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="nqB-Vg-jVq"/>
+                                <include reference="P4v-z9-Ubh"/>
+                                <include reference="jvw-qf-swu"/>
+                                <include reference="kz3-ZK-D1r"/>
+                                <include reference="Luw-ew-4ot"/>
+                                <include reference="NYy-mK-cJz"/>
+                                <include reference="Uje-7C-Wh4"/>
+                                <include reference="jhl-xY-vSy"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="T4f-Im-pw9">
+                        <barButtonItem key="rightBarButtonItem" title="Favorites" id="Nnr-k7-HWZ">
+                            <connections>
+                                <segue destination="9Ek-f3-7n1" kind="show" id="1xd-Dc-fZZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="vwu-pu-U5Q" id="prJ-Uk-UMU"/>
+                        <outlet property="searchBar" destination="6CI-Tz-BYb" id="96m-nm-sAR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="8DL-iX-PsB">
+                    <connections>
+                        <action selector="didStarImagePressed:" destination="vXZ-lx-hvc" id="9N2-9D-Ixy"/>
+                        <outlet property="delegate" destination="vXZ-lx-hvc" id="Bxn-iM-c6X"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1197" y="289"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="Jf8-JN-GKc">
+            <objects>
+                <viewController id="9Ek-f3-7n1" customClass="FavoritesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rw5-gp-uwT"/>
+                        <viewControllerLayoutGuide type="bottom" id="tSD-DY-gwA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="84d-BO-Qjv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Tlf-KS-sYK">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1Pc-xA-4vk">
+                                    <size key="itemSize" width="399.5" height="399"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="zus-GQ-7a9" customClass="CustomCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="399.5" height="399"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3AC-dt-3uX">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                    <gestureRecognizers/>
+                                                    <variation key="widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="399.5" height="399"/>
+                                                    </variation>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="uot-hs-c1R" appends="YES" id="3j9-7z-kva"/>
+                                                        <outletCollection property="gestureRecognizers" destination="uot-hs-c1R" appends="YES" id="4FB-ph-0Vp"/>
+                                                    </connections>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <gestureRecognizers/>
+                                        <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="3AC-dt-3uX"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="subviews">
+                                                <include reference="3AC-dt-3uX"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="favoriteImageView" destination="3AC-dt-3uX" id="iAe-ak-3uW"/>
+                                            <outletCollection property="gestureRecognizers" destination="uot-hs-c1R" appends="YES" id="bOH-wC-EHU"/>
+                                            <outletCollection property="gestureRecognizers" destination="uot-hs-c1R" appends="YES" id="MEB-EN-Pq3"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="64" width="400" height="600"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="9Ek-f3-7n1" id="WQu-dM-Rdx"/>
+                                    <outlet property="delegate" destination="9Ek-f3-7n1" id="eMB-Ic-ozg"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Tlf-KS-sYK"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Tlf-KS-sYK"/>
+                            </mask>
+                        </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="uot-hs-c1R" appends="YES" id="PCG-6r-Qin"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" title="Favorites" id="EEC-nL-ukf">
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="If4-k2-TEQ">
+                            <connections>
+                                <segue destination="uCA-oj-Am9" kind="show" id="U4D-DD-08h"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="Tlf-KS-sYK" id="W9d-LF-Cju"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IMT-Hm-zfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="uot-hs-c1R">
+                    <connections>
+                        <action selector="swipeHandler:" destination="9Ek-f3-7n1" id="H3l-Kb-efa"/>
+                        <outlet property="delegate" destination="9Ek-f3-7n1" id="iia-gD-ArM"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1853.25" y="289"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="lsT-J8-7yn">
+            <objects>
+                <viewController id="uCA-oj-Am9" customClass="MapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tje-ow-ctn"/>
+                        <viewControllerLayoutGuide type="bottom" id="m9a-YY-fy4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rxc-O4-nyY">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="y8Y-y7-W5b">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <connections>
+                                    <outlet property="delegate" destination="uCA-oj-Am9" id="5U2-DM-Cnf"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="y8Y-y7-W5b" secondAttribute="trailing" constant="-16" id="Af3-sB-iSC"/>
+                            <constraint firstItem="y8Y-y7-W5b" firstAttribute="top" secondItem="rxc-O4-nyY" secondAttribute="topMargin" id="NNn-2Z-g6e"/>
+                            <constraint firstItem="m9a-YY-fy4" firstAttribute="top" secondItem="y8Y-y7-W5b" secondAttribute="bottom" id="Ot5-Fn-TH3"/>
+                            <constraint firstItem="y8Y-y7-W5b" firstAttribute="leading" secondItem="rxc-O4-nyY" secondAttribute="leadingMargin" constant="-16" id="h6r-no-MS8"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="y8Y-y7-W5b"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Af3-sB-iSC"/>
+                                <exclude reference="NNn-2Z-g6e"/>
+                                <exclude reference="h6r-no-MS8"/>
+                                <exclude reference="Ot5-Fn-TH3"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="y8Y-y7-W5b"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Af3-sB-iSC"/>
+                                <include reference="NNn-2Z-g6e"/>
+                                <include reference="h6r-no-MS8"/>
+                                <include reference="Ot5-Fn-TH3"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="rg6-kF-zq2"/>
+                    <connections>
+                        <outlet property="mapView" destination="y8Y-y7-W5b" id="zsa-s9-vWQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nWQ-jt-uXJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2530.5" y="288"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="m4j-W6-w9q">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NIr-Gp-5nC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rkb-ph-Vdh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="JUf-jI-Ffm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3tD-UY-nQ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="303" y="289"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="favoriteBlank" width="256" height="256"/>
+    </resources>
+</document>
