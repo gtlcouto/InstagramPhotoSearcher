@@ -8,7 +8,7 @@
 
 #import "RootViewController.h"
 #import "CustomCollectionViewCell.h"
-#import "FavoritesViewController.h"
+#import "MapViewController.h"
 #import "Parser.h"
 #import "Photo.h"
 
@@ -16,15 +16,20 @@
 
 #define kDateKey @"dateKey"
 
-@interface RootViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UISearchBarDelegate,ParserDelegate>
+@interface RootViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UISearchBarDelegate,ParserDelegate,UIScrollViewDelegate>
 
 @property NSMutableArray *favouritePhotos;
-@property NSMutableArray *instagramPhotos;
+@property NSMutableArray *currentPhotos;
+
+
+@property NSMutableArray *draggedCells;
+@property BOOL isSearchBarVisible;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property Parser *parser;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraintSearchBar;
 
 @end
 
@@ -33,9 +38,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.favouritePhotos = [NSMutableArray new];
+    self.draggedCells = [NSMutableArray new];
     self.parser = [Parser new];
     self.parser.delegate = self;
     [self load];
+
+    self.topConstraintSearchBar.constant = -50;
 
     if ([self connected])
     {
@@ -51,6 +59,80 @@
     }
 
 }
+- (IBAction)searchButtonTapped:(UIButton *)sende
+{
+    if(self.isSearchBarVisible)
+    {
+
+    [UIView animateWithDuration:0.2 animations:^{
+        self.topConstraintSearchBar.constant = 0;
+        [self.view layoutIfNeeded];
+    }];
+    }
+    else
+    {
+        [UIView animateWithDuration:0.2 animations:^{
+            self.topConstraintSearchBar.constant = -50;
+            [self.view layoutIfNeeded];
+        }];
+    }
+    self.isSearchBarVisible = !self.isSearchBarVisible;
+
+}
+
+
+- (void)cellAnimationToLeft:(CustomCollectionViewCell *)cell
+{
+    [UIView animateWithDuration:0.2 animations:^{
+        cell.leftConstraint.constant = -8;
+        cell.rightConstraint.constant = -8;
+
+        [cell.imageView layoutIfNeeded];
+    }];
+}
+- (IBAction)onFavoriteButtonPressed:(UIButton *)sender
+{
+    self.currentPhotos = self.favouritePhotos;
+    [self.collectionView reloadData];
+
+    
+}
+
+-(IBAction)onSwipe:(UISwipeGestureRecognizer *)swipeGesture
+{
+    CGPoint point = [swipeGesture locationInView:self.collectionView];
+    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:point];
+    CustomCollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+
+    if (swipeGesture.direction == UISwipeGestureRecognizerDirectionRight)
+    {
+
+        [UIView animateWithDuration:0.2 animations:^{
+            cell.leftConstraint.constant = 72;
+            cell.rightConstraint.constant = -88;
+            [self.draggedCells addObject:cell];
+            [cell.imageView layoutIfNeeded];
+        }];
+    }
+    else if (swipeGesture.direction == UISwipeGestureRecognizerDirectionLeft)
+    {
+        [self cellAnimationToLeft:cell];
+        [self.draggedCells removeObject:cell];
+    }
+
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    for (CustomCollectionViewCell *cell in self.draggedCells)
+    {
+        [self cellAnimationToLeft:cell];
+
+    }
+
+}
+
+
 
 - (void) viewWillAppear:(BOOL)animated
 {
@@ -69,7 +151,7 @@
 
 -(void)arrayLoadedWithPhoto:(NSMutableArray *)photoArray
 {
-    self.instagramPhotos = photoArray;
+    self.currentPhotos = photoArray;
     [self.collectionView reloadData];
 
     if (!self.favouritePhotos)
@@ -79,7 +161,7 @@
 
     for (Photo *photo in self.favouritePhotos)
     {
-        for (Photo *photoOfInstagram in self.instagramPhotos)
+        for (Photo *photoOfInstagram in self.currentPhotos)
         {
             if ([photoOfInstagram.photoId isEqual:photo.photoId])
             {
@@ -96,7 +178,7 @@
     CGPoint point = [sender locationInView:self.collectionView];
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:point];
 
-    Photo *photo =[self.instagramPhotos objectAtIndex:indexPath.row];
+    Photo *photo =[self.currentPhotos objectAtIndex:indexPath.row];
 
     if (photo.isFavorited)
     {
@@ -144,7 +226,7 @@
 {
     CustomCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Item" forIndexPath:indexPath];
 
-    Photo *photo = [self.instagramPhotos objectAtIndex:indexPath.row];
+    Photo *photo = [self.currentPhotos objectAtIndex:indexPath.row];
 
 
     if (photo.isFavorited)
@@ -167,13 +249,13 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.instagramPhotos.count;
+    return self.currentPhotos.count;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    FavoritesViewController *favoritesVC = segue.destinationViewController;
-    favoritesVC.favoritesArray = self.favouritePhotos;
+    MapViewController *mapVC = segue.destinationViewController;
+    mapVC.favoritePhotos = self.favouritePhotos;
 }
 
 -(NSURL *)documentsDirectory
@@ -222,7 +304,7 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
     NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-    self.instagramPhotos = [jsonDictionary objectForKey:@"data"];
+    self.currentPhotos = [jsonDictionary objectForKey:@"data"];
 
 
     }];

@@ -8,6 +8,7 @@
 
 #import "FavoritesViewController.h"
 #import "CustomCollectionViewCell.h"
+#import "MapViewController.h"
 #import "Photo.h"
 
 @interface FavoritesViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UIAlertViewDelegate,UIGestureRecognizerDelegate>
@@ -87,6 +88,12 @@
 }
 
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    MapViewController *mapVC = segue.destinationViewController;
+    mapVC.favoritePhotos = self.favoritesArray;
+
+}
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

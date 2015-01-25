@@ -21,13 +21,15 @@
 
 @interface CustomCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-//@property (weak, nonatomic) IBOutlet UIButton *favouriteStar;
 @property (weak, nonatomic) IBOutlet UIImageView *favouriteStar;
 @property Photo *photo;
 @property NSIndexPath *indexPath;
 @property (weak, nonatomic) IBOutlet UIImageView *favoriteImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightConstraint;
 
-@property BOOL isPictureFavourite;
+
+
 
 
 @property (nonatomic,weak) id <CustomCellDelegate> delegate;

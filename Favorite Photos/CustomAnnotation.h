@@ -1,15 +1,16 @@
 //
-//  MapViewController.h
+//  CustomAnnotation.h
 //  Favorite Photos
 //
 //  Created by Diego Cichello on 1/23/15.
 //  Copyright (c) 2015 Mobile Makers. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import "Photo.h"
 
-@interface MapViewController : UIViewController
+@interface CustomAnnotation : MKPointAnnotation
 
-@property NSMutableArray *favoritePhotos;
+@property Photo *photo;
 
 @end
