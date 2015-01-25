@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NIr-Gp-5nC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NIr-Gp-5nC">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -18,17 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u38-58-F2Z">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u38-58-F2Z">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nLj-M1-WJ1">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                        <color key="backgroundColor" red="0.33908936864292916" green="1" blue="0.73363635596315624" alpha="1" colorSpace="calibratedRGB"/>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="400" height="56"/>
-                                        </variation>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diD-5S-D0T">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diD-5S-D0T">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <state key="normal" image="star-7">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -40,7 +33,7 @@
                                             <action selector="onFavoriteButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="SNq-um-BrD"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3f-bI-uDH">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3f-bI-uDH">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <state key="normal" image="search-7">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -52,7 +45,7 @@
                                             <action selector="searchButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="0hq-RH-KMr"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N17-FT-mAn">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N17-FT-mAn">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <state key="normal" image="photo-7">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -64,28 +57,29 @@
                                             <segue destination="uCA-oj-Am9" kind="show" id="Yyq-Zg-rzt"/>
                                         </connections>
                                     </button>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nLj-M1-WJ1">
+                                        <rect key="frame" x="40" y="38" width="240" height="128"/>
+                                        <color key="backgroundColor" red="0.33908936864292916" green="1" blue="0.73363635596315624" alpha="1" colorSpace="calibratedRGB"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="56"/>
+                                        </variation>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.29703222811340968" green="1" blue="0.6550835006921385" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="B3M-N9-Rnh"/>
                                 </constraints>
                                 <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="nLj-M1-WJ1"/>
-                                        <exclude reference="diD-5S-D0T"/>
-                                        <exclude reference="T3f-bI-uDH"/>
-                                        <exclude reference="N17-FT-mAn"/>
-                                    </mask>
                                     <mask key="constraints">
                                         <exclude reference="B3M-N9-Rnh"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="subviews">
-                                        <include reference="nLj-M1-WJ1"/>
                                         <include reference="diD-5S-D0T"/>
                                         <include reference="T3f-bI-uDH"/>
                                         <include reference="N17-FT-mAn"/>
+                                        <include reference="nLj-M1-WJ1"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="B3M-N9-Rnh"/>
@@ -125,7 +119,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="399" height="399"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eCJ-Cj-etD">
@@ -153,6 +147,9 @@
                                                                     <include reference="gEV-JE-ivP"/>
                                                                 </mask>
                                                             </variation>
+                                                            <connections>
+                                                                <action selector="onButtonTwitterPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="f0u-Vs-Djv"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3W-UN-sgx">
                                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -162,6 +159,9 @@
                                                             <variation key="widthClass=compact" misplaced="YES">
                                                                 <rect key="frame" x="22" y="185" width="52" height="38"/>
                                                             </variation>
+                                                            <connections>
+                                                                <action selector="onButtonEmailPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Xs3-ht-1RS"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sq1-bA-hpx">
                                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -207,12 +207,12 @@
                                                         </mask>
                                                         <mask key="constraints">
                                                             <exclude reference="PSf-t9-xQY"/>
-                                                            <exclude reference="mvi-su-OGF"/>
+                                                            <exclude reference="HEY-Bj-Dfc"/>
+                                                            <exclude reference="fhL-Vj-asc"/>
                                                             <exclude reference="6bB-aM-qB3"/>
                                                             <exclude reference="Ijw-8h-BrK"/>
                                                             <exclude reference="YUI-UA-V7r"/>
-                                                            <exclude reference="HEY-Bj-Dfc"/>
-                                                            <exclude reference="fhL-Vj-asc"/>
+                                                            <exclude reference="mvi-su-OGF"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="widthClass=compact">
@@ -223,12 +223,12 @@
                                                         </mask>
                                                         <mask key="constraints">
                                                             <include reference="PSf-t9-xQY"/>
-                                                            <include reference="mvi-su-OGF"/>
+                                                            <include reference="HEY-Bj-Dfc"/>
+                                                            <include reference="fhL-Vj-asc"/>
                                                             <include reference="6bB-aM-qB3"/>
                                                             <include reference="Ijw-8h-BrK"/>
                                                             <include reference="YUI-UA-V7r"/>
-                                                            <include reference="HEY-Bj-Dfc"/>
-                                                            <include reference="fhL-Vj-asc"/>
+                                                            <include reference="mvi-su-OGF"/>
                                                         </mask>
                                                     </variation>
                                                 </view>
@@ -272,7 +272,6 @@
                                             <constraint firstAttribute="bottomMargin" secondItem="XBi-ZK-NOO" secondAttribute="bottom" constant="-8" id="rzx-Qw-OWw"/>
                                             <constraint firstItem="eCJ-Cj-etD" firstAttribute="top" secondItem="5UO-g8-NrH" secondAttribute="topMargin" constant="-8" id="sDS-ot-cf0"/>
                                         </constraints>
-                                        <size key="customSize" width="399" height="399"/>
                                         <variation key="default">
                                             <mask key="subviews">
                                                 <exclude reference="eCJ-Cj-etD"/>
@@ -284,11 +283,11 @@
                                                 <exclude reference="9XO-wz-mHI"/>
                                                 <exclude reference="q9v-IT-ncV"/>
                                                 <exclude reference="rzx-Qw-OWw"/>
+                                                <exclude reference="0CJ-ce-rHR"/>
+                                                <exclude reference="eid-ci-6L3"/>
                                                 <exclude reference="4Gu-Kw-nhc"/>
                                                 <exclude reference="oS6-YO-EgQ"/>
                                                 <exclude reference="sDS-ot-cf0"/>
-                                                <exclude reference="0CJ-ce-rHR"/>
-                                                <exclude reference="eid-ci-6L3"/>
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact">
@@ -302,11 +301,11 @@
                                                 <include reference="9XO-wz-mHI"/>
                                                 <include reference="q9v-IT-ncV"/>
                                                 <include reference="rzx-Qw-OWw"/>
+                                                <include reference="0CJ-ce-rHR"/>
+                                                <include reference="eid-ci-6L3"/>
                                                 <include reference="4Gu-Kw-nhc"/>
                                                 <include reference="oS6-YO-EgQ"/>
                                                 <include reference="sDS-ot-cf0"/>
-                                                <include reference="0CJ-ce-rHR"/>
-                                                <include reference="eid-ci-6L3"/>
                                             </mask>
                                         </variation>
                                         <connections>
@@ -343,7 +342,6 @@
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="u38-58-F2Z"/>
                                 <exclude reference="6CI-Tz-BYb"/>
                                 <exclude reference="vwu-pu-U5Q"/>
                             </mask>

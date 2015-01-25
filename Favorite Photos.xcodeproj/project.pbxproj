@@ -16,7 +16,6 @@
 		296CF0021A748C300050385B /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 296CF0011A748C300050385B /* Accounts.framework */; };
 		296CF0041A748C380050385B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 296CF0031A748C380050385B /* QuartzCore.framework */; };
 		2979D9981A71B55900EADF20 /* CustomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2979D9971A71B55900EADF20 /* CustomCollectionViewCell.m */; };
-		299EED331A71D191008B6687 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 299EED321A71D191008B6687 /* FavoritesViewController.m */; };
 		29BFA02D1A71B0B700DB435F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29BFA02C1A71B0B700DB435F /* main.m */; };
 		29BFA0301A71B0B700DB435F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 29BFA02F1A71B0B700DB435F /* AppDelegate.m */; };
 		29BFA0331A71B0B700DB435F /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29BFA0321A71B0B700DB435F /* RootViewController.m */; };
@@ -51,8 +50,6 @@
 		296CF0031A748C380050385B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2979D9961A71B55900EADF20 /* CustomCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewCell.h; sourceTree = "<group>"; };
 		2979D9971A71B55900EADF20 /* CustomCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionViewCell.m; sourceTree = "<group>"; };
-		299EED311A71D191008B6687 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
-		299EED321A71D191008B6687 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		29BFA0271A71B0B700DB435F /* Favorite Photos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Favorite Photos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BFA02B1A71B0B700DB435F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29BFA02C1A71B0B700DB435F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -108,8 +105,6 @@
 			children = (
 				29BFA0311A71B0B700DB435F /* RootViewController.h */,
 				29BFA0321A71B0B700DB435F /* RootViewController.m */,
-				299EED311A71D191008B6687 /* FavoritesViewController.h */,
-				299EED321A71D191008B6687 /* FavoritesViewController.m */,
 				2948EB011A733D610042A064 /* MapViewController.h */,
 				2948EB021A733D610042A064 /* MapViewController.m */,
 			);
@@ -291,7 +286,6 @@
 			files = (
 				2948EB081A73458C0042A064 /* CustomAnnotation.m in Sources */,
 				290C02911A71D55A0082A2D5 /* Photo.m in Sources */,
-				299EED331A71D191008B6687 /* FavoritesViewController.m in Sources */,
 				29BFA0331A71B0B700DB435F /* RootViewController.m in Sources */,
 				2948EB031A733D610042A064 /* MapViewController.m in Sources */,
 				29BFA0301A71B0B700DB435F /* AppDelegate.m in Sources */,

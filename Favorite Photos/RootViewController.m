@@ -1,27 +1,33 @@
-//
-//  ViewController.m
-//  Favorite Photos
-//
-//  Created by Diego Cichello on 1/22/15.
-//  Copyright (c) 2015 Mobile Makers. All rights reserved.
-//
+/*
+  ViewController.m
+  Favorite Photos
+
+  Created by Diego Cichello on 1/22/15.
+  Copyright (c) 2015 Mobile Makers. All rights reserved.
+
+  REVISIONS: Gustavo Couto 1/22/15 6:58
+             -Fixed search bar crashing when spaces were present
+             -Added twitter button implementations
+*/
 
 #import "RootViewController.h"
 #import "CustomCollectionViewCell.h"
 #import "MapViewController.h"
 #import "Parser.h"
 #import "Photo.h"
+#import <MessageUI/MessageUI.h>
+#import <Social/Social.h>
 
 
 
 #define kDateKey @"dateKey"
 
-@interface RootViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UISearchBarDelegate,ParserDelegate,UIScrollViewDelegate>
+@interface RootViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UISearchBarDelegate,ParserDelegate,UIScrollViewDelegate, MFMailComposeViewControllerDelegate>
 
 @property NSMutableArray *favouritePhotos;
 @property NSMutableArray *currentPhotos;
 
-
+@property MFMailComposeViewController * mc;
 @property NSMutableArray *draggedCells;
 @property BOOL isSearchBarVisible;
 
@@ -41,6 +47,7 @@
     self.draggedCells = [NSMutableArray new];
     self.parser = [Parser new];
     self.parser.delegate = self;
+    self.mc = [[MFMailComposeViewController alloc] init];
     [self load];
 
     self.topConstraintSearchBar.constant = -50;
@@ -106,6 +113,13 @@
 
     if (swipeGesture.direction == UISwipeGestureRecognizerDirectionRight)
     {
+
+        for (CustomCollectionViewCell *cell in self.draggedCells)
+        {
+            [self cellAnimationToLeft:cell];
+            [self.draggedCells removeObject:[self.draggedCells lastObject]];
+            
+        }
 
         [UIView animateWithDuration:0.2 animations:^{
             cell.leftConstraint.constant = 72;
@@ -218,7 +232,9 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [self.parser getDataFromInstagramApiByString:searchBar.text];
+    NSString * str = searchBar.text;
+    str=[str stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [self.parser getDataFromInstagramApiByString:str];
     
 }
 
@@ -309,6 +325,56 @@
 
     }];
 }
+
+#pragma mark IBActions
+
+
+- (IBAction)onButtonTwitterPressed:(id)sender {
+
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
+    {
+        SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        [tweetSheet setInitialText:@"Twitter API Test"];
+        CustomCollectionViewCell * cell = [self.draggedCells lastObject];
+        [tweetSheet addImage:cell.imageView.image];
+        [self presentViewController:tweetSheet animated:YES completion:nil];
+    }
+    else
+    {
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"Sorry"
+                                  message:@"You can't send a tweet right now, make sure your device has an internet connection and you have at least one Twitter account setup"
+                                  delegate:self
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+
+}
+
+- (IBAction)onButtonEmailPressed:(id)sender {
+
+    // Email Subject
+    NSString *emailTitle = @"Check out this picture!";
+    // Email Content
+    NSString *messageBody = @"<h1>Check out this instagram picture!</h1>"; // Change the message body to HTML
+    // To address
+    NSArray *toRecipents = [NSArray arrayWithObject:@"check@out.com"];
+     CustomCollectionViewCell * cell = [self.draggedCells lastObject];
+    NSData * jpegData = UIImageJPEGRepresentation(cell.imageView.image, 1);
+    NSString *fileName = @"picture";
+    fileName = [fileName stringByAppendingPathExtension:@"jpeg"];
+
+    [self.mc addAttachmentData:jpegData mimeType:@"image/png" fileName:fileName];
+    self.mc.mailComposeDelegate = self;
+    [self.mc setSubject:emailTitle];
+    [self.mc setMessageBody:messageBody isHTML:YES];
+    [self.mc setToRecipients:toRecipents];
+    // Present mail view controller on screen
+    [self presentViewController:self.mc animated:YES completion:NULL];
+}
+
+
 
 
 
