@@ -119,7 +119,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="384"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eCJ-Cj-etD">
@@ -140,8 +140,7 @@
                                                                     <exclude reference="gEV-JE-ivP"/>
                                                                 </mask>
                                                             </variation>
-                                                            <variation key="widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="22" y="133" width="52" height="43"/>
+                                                            <variation key="widthClass=compact">
                                                                 <mask key="constraints">
                                                                     <include reference="2a1-CJ-hWB"/>
                                                                     <include reference="gEV-JE-ivP"/>
@@ -156,9 +155,6 @@
                                                             <state key="normal" image="email-7">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                            <variation key="widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="22" y="185" width="52" height="38"/>
-                                                            </variation>
                                                             <connections>
                                                                 <action selector="onButtonEmailPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Xs3-ht-1RS"/>
                                                             </connections>
@@ -178,8 +174,7 @@
                                                                     <exclude reference="iZL-iw-blx"/>
                                                                 </mask>
                                                             </variation>
-                                                            <variation key="widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="22" y="231" width="29" height="30"/>
+                                                            <variation key="widthClass=compact">
                                                                 <mask key="constraints">
                                                                     <include reference="RhC-bh-Gec"/>
                                                                     <include reference="iZL-iw-blx"/>
